@@ -32,8 +32,6 @@ services:
       - luonglit
     depends_on:
       - php-fpm
-#    depends_on:
-#      - php-fpm
   php-fpm:
     build:
       context: ./php-fpm
@@ -43,28 +41,7 @@ services:
       - luonglit
     environment:
       PHP_XDEBUG_ENABLED: 1 # Set 1 to enable.
-      XDEBUG_CONFIG: remote_host=192.168.0.106 idekey=PHPSTORM remote_enable=1
+      XDEBUG_CONFIG: remote_host=10.254.254.254 idekey=PHPSTORM remote_enable=1
       PHP_IDE_CONFIG: serverName=docker.local
     links:
       - database
-#  ll-base:
-#    container_name: ll-test
-#    build:
-#      dockerfile: Dockerfile
-#      context: ./docker
-#    hostname: ll-hostname
-#    networks:
-#      - luonglit
-#    volumes:
-#      - ./:/var/www/ll-test
-#    restart: always
-#  nginx:
-#    container_name: ll-nginx
-#    image: nginx:latest
-#    ports:
-#      - "8088:80"
-#    volumes:
-#      - ./site.conf:/etc/nginx/conf.d/ll-nginx.conf
-#      - ./:/var/www/ll-test
-#    links:
-#      - ll-base
